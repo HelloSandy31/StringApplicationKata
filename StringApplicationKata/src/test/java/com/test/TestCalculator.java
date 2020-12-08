@@ -28,9 +28,17 @@ public class TestCalculator {
 	}
 
 	@Test
-	public final void unknownAmountOfNumbers() throws Exception {
+	public void unknownAmountOfNumbers() throws Exception {
 
 		assertEquals(sc.add("1,2,3"), 6);
 
 	}
+
+	@Test
+	// Testing the Newline delimiter(\n)
+	public void addingValuesWithNewline() throws Exception {
+		assertEquals(sc.add("2\n2,3"), 7);
+
+	}
+
 }
