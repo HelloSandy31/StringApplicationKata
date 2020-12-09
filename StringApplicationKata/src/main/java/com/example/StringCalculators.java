@@ -24,6 +24,8 @@ public class StringCalculators {
 		if (numbers.length() > 1 && !numbers.startsWith("//"))
 			for (String input : numbersArray) {
 				if (!input.trim().isEmpty()) {
+					if(Integer.parseInt(input)>1000)
+						continue;
 					int numberInt = Integer.parseInt(input.trim());
 
 					// For negative Value will show exception message
@@ -55,7 +57,9 @@ public class StringCalculators {
 				}
 
 			}
-
+			
+			
+				
 		}
 		return total;
 

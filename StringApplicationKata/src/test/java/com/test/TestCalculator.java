@@ -65,5 +65,10 @@ public class TestCalculator {
 		sc.getCalledCount();
 
 	}
+	
+	@Test
+    public final void greaterThan1000NotAllowedInSum() throws Exception {
+        assertEquals(3+1000+6, sc.add("3,1000,1001,6,1234"));
+    }
 
 }
