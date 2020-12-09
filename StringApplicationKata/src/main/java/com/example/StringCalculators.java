@@ -1,6 +1,7 @@
 package com.example;
 
-import java.util.EnumMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StringCalculators {
 
@@ -9,8 +10,7 @@ public class StringCalculators {
 		String delemiters = ",|\n|;";
 		int total = 0;
 		String[] numbersArray = numbers.split(delemiters);
-
-		String numbersWithoutDelimiter = numbers;
+		List<Integer> negativeNumbers = new ArrayList<Integer>();
 
 		// For Empty Values
 		if (numbers.isEmpty())
@@ -21,9 +21,18 @@ public class StringCalculators {
 		// addition for two or unknown amount of number with delimeter(,\n)
 		if (numbers.length() > 1 && !numbers.startsWith("//"))
 			for (String input : numbersArray) {
-				if (!input.trim().isEmpty()) { //
-					total += Integer.parseInt(input);
+				if (!input.trim().isEmpty()) {
+					int numberInt = Integer.parseInt(input.trim());
 
+					// For negative Value will show exception message
+					if (numberInt < 0) {
+						negativeNumbers.add(numberInt);
+					}
+					total += numberInt;
+
+				}
+				if (negativeNumbers.size() > 0) {
+					throw new RuntimeException("Negatives not allowed: " + negativeNumbers.toString());
 				}
 
 			}
@@ -49,5 +58,4 @@ public class StringCalculators {
 		return total;
 
 	}
-
 }
