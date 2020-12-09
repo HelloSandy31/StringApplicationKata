@@ -24,6 +24,7 @@ public class StringCalculators {
 		if (numbers.length() > 1 && !numbers.startsWith("//"))
 			for (String input : numbersArray) {
 				if (!input.trim().isEmpty()) {
+					//For more than 1000 will be ignored
 					if(Integer.parseInt(input)>1000)
 						continue;
 					int numberInt = Integer.parseInt(input.trim());
