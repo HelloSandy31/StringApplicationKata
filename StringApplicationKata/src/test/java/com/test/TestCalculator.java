@@ -85,5 +85,12 @@ public class TestCalculator {
 		assertEquals(sc.add("//[*][%]\n1*2%3"), 6);
 
 	}
+	
+	@Test
+	// Testing for multiple delimiter
+	public void multipleDelimeterWithMoreThanOneChar() throws Exception {
+		assertEquals(sc.add("//[**][%%]\n1**2%%3"), 6);
+
+	}
 
 }
