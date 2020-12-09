@@ -65,18 +65,24 @@ public class TestCalculator {
 		sc.getCalledCount();
 
 	}
-	
-	@Test
-	//Testing for bigger than 1000 value
-    public final void greaterThan1000NotAllowedInSum() throws Exception {
-        assertEquals(3+1000+6, sc.add("3,1000,1001,6,1234"));
-    }
 
-	
+	@Test
+	// Testing for bigger than 1000 value
+	public final void greaterThan1000NotAllowedInSum() throws Exception {
+		assertEquals(3 + 1000 + 6, sc.add("3,1000,1001,6,1234"));
+	}
+
 	@Test
 	// Testing for delimiter of any length
 	public void supportDelimeterOfAnyLength() throws Exception {
 		assertEquals(sc.add("//[***]\n1***2***3"), 6);
+
+	}
+
+	@Test
+	// Testing for multiple delimiter
+	public void supportMultipleDelimeter() throws Exception {
+		assertEquals(sc.add("//[*][%]\n1*2%3"), 6);
 
 	}
 
