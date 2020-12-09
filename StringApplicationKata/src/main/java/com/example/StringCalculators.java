@@ -1,28 +1,53 @@
 package com.example;
 
+import java.util.EnumMap;
+
 public class StringCalculators {
 
 	public int add(String numbers) throws Exception {
 
-		String[] numbersArray = numbers.split(",|\n");
-		int sum = 0;
+		String delemiters = ",|\n|;";
+		int total = 0;
+		String[] numbersArray = numbers.split(delemiters);
 
+		String numbersWithoutDelimiter = numbers;
+
+		// For Empty Values
 		if (numbers.isEmpty())
 			return 0;
-		if (numbersArray.length == 1)
-			return Integer.parseInt(numbersArray[0]);
-		if (numbersArray.length == 2)
+		// For only one values
+		if (numbers.length() == 1)
+			return Integer.parseInt(numbers);
+		// addition for two or unknown amount of number with delimeter(,\n)
+		if (numbers.length() > 1 && !numbers.startsWith("//"))
+			for (String input : numbersArray) {
+				if (!input.trim().isEmpty()) { //
+					total += Integer.parseInt(input);
 
-			return Integer.parseInt(numbersArray[0]) + Integer.parseInt(numbersArray[1]);
+				}
 
-		// addition for unknow amount of input and also for (\n) delemeter
-		for (String input : numbersArray) {
-			if (!input.trim().isEmpty()) { //
-				sum += Integer.parseInt(input);
-				System.out.println(sum);
+			}
+
+		// Support different delimeters
+
+		if (numbers.startsWith("//")) {
+			int slashDelimiterIndex = numbers.indexOf("\n" + 1);
+			String newStringAfterSlash = numbers.substring(slashDelimiterIndex, numbers.length());
+			char[] newArr = newStringAfterSlash.toCharArray();
+			for (int i = 0; i < newArr.length; i++) {
+				if (newArr[i] >= '0' && newArr[i] <= '9')
+
+				{
+
+					total = total + (Character.getNumericValue(newArr[i]));
+
+				}
+
 			}
 
 		}
-		return sum;
+		return total;
+
 	}
+
 }
