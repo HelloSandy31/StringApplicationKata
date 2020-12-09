@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculators {
+	int count = 0;
 
 	public int add(String numbers) throws Exception {
 
 		String delemiters = ",|\n|;";
 		int total = 0;
+		count++;
 		String[] numbersArray = numbers.split(delemiters);
 		List<Integer> negativeNumbers = new ArrayList<Integer>();
 
@@ -58,4 +60,11 @@ public class StringCalculators {
 		return total;
 
 	}
+
+//Getting total count to add() method
+	public int getCalledCount() {
+		return count;
+
+	}
+
 }

@@ -2,12 +2,13 @@ package com.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 
 import com.example.StringCalculators;
 
 public class TestCalculator {
-	public StringCalculators sc = new StringCalculators();
+	public static StringCalculators sc = new StringCalculators();
 
 	@Test
 	// Testing for empty value
@@ -56,6 +57,13 @@ public class TestCalculator {
 	@Test(expected = Exception.class)
 	public void multipleNegativeInputReturnsException() throws Exception {
 		sc.add("-10,40,-30,-20,39");
+	}
+
+	@AfterClass
+	public static void getAllCountOfAdd() {
+
+		sc.getCalledCount();
+
 	}
 
 }
